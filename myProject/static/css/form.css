@@ -1,0 +1,166 @@
+/* ===== BASE STYLES ===== */
+.content {
+    background-color: #dee2e6;
+    padding: 50px 0;
+  }
+  
+  /* ===== CARD STYLES ===== */
+  .card {
+    height: 100%;
+  }
+  
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    background-color: #846778;
+    font-weight: 600;
+  }
+  
+  .card-title {
+    font-size: 1.2rem;
+    color: #e3e9eb;
+  }
+  
+  .card-body {
+    padding: 50px 20px;
+    font-size: 0.9rem;
+  }
+  
+  /* ===== IMAGE PREVIEW ===== */
+  .image-preview-wrapper {
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+  }
+  
+  .preview-image {
+    max-height: 300px;
+    width: auto;
+    margin: 0 auto;
+    display: block;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+  }
+  
+  /* ===== FORM STYLES ===== */
+  form label {
+    color: #846778;
+    font-weight: 600;
+    margin-bottom: 0.1rem;
+    display: block;
+    font-size: .9em;
+  }
+  
+  select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    background-color: white;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='%23846778' d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+  }
+  
+  /* Fix for Wide Buttons */
+.btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+  }
+  
+  .btn-form {
+    width: 200px; 
+    padding: 8px 20px;
+    background-color: #846778;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  /* Form Input Improvements */
+  form input[type="file"],
+  form select {
+    width: 100%;
+    max-width: 350px; /* Prevent stretching */
+    margin-bottom: 15px;
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+  }
+  
+  /* File Input Styling */
+  input[type="file"]::file-selector-button {
+    padding: 6px 12px;
+    background-color: #846778;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  /* Results Section */
+  .analysis-results {
+    background: #e4dbe2;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+  /* ===== RESPONSIVE ADJUSTMENTS ===== */
+  @media (max-width: 768px) {
+    .card{
+        margin-bottom: 20px;
+    }
+    
+    
+    .card-body {
+      padding: 30px 15px;
+    }
+  
+    .btn-group {
+      gap: 15px;
+    }
+  
+    .btn-form {
+      min-width: 120px;
+      padding: 8px 20px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .content {
+      padding: 30px 0;
+    }
+  
+    .card-header {
+      height: 50px;
+    }
+  
+    .card-title {
+      font-size: 1.1rem;
+    }
+  
+    .preview-image {
+      max-height: 200px;
+    }
+  
+    .btn-group {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+  
+    .btn-form {
+      width: 100%;
+      max-width: 200px;
+    }
+  }

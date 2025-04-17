@@ -1,0 +1,44 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg  bg-transparent" id= 'navbar_cusotm'>
+    <div class="container-fluid ms-4 bg-transparent"  id= 'navbar_2' >
+        <!-- Company Name -->
+        <a class="navbar-brand" href="/">ACURIT </a>
+
+        <!-- Toggle Button for Mobile View -->
+        <button class="navbar-toggler bg-transparent smaller" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon smaller"></span>
+        </button>
+
+        <!-- Navbar Links -->
+        <div class="collapse navbar-collapse me-3" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item fs-6">
+                    <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
+                </li>
+                
+                <li class="nav-item fs-6">
+                    <a class="nav-link" href="{% url 'imagecropper' %}">Image Cropper</a>
+                </li>
+
+                {% if user.is_authenticated %}
+                    <!--  Show Logout if User is Logged In -->
+                    <li class="nav-item fs-6">
+                        <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+                    </li>
+                    <li class="nav-item fs-6">
+                        <a class="nav-link logout-btn" href="{% url 'logout' %}">Logout</a>
+                    </li>
+                {% else %}
+                    <!--  Show Login/Register if User is NOT Logged In -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Sign Up</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

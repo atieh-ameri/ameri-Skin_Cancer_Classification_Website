@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% load static %}  
+
+
+{% block style %}
+<link rel="stylesheet" href="myProject/static/css/home.css">
+{% endblock %}
+
+
+
+{% block content %}
+<div class="body-container">
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>BE ACURIT</h1>
+            <a href="{% url 'login' %}" class="btn">Get Started</a>
+        </div>
+    </section>
+
+    
+    <!-- Home Section 1 -->
+    <section class="home-section" id= "section-1">
+        <div class="container text_container">
+            <p>At <strong>Accurate</strong>, our mission is to revolutionize 
+                <strong>skin cancer detection</strong> through the power of <strong>artificial intelligence</strong>. 
+                We provide an advanced, AI-driven platform designed to help individuals and healthcare professionals 
+                <strong>analyze skin lesions</strong> with precision and confidence.</p>
+
+            <p>Using state-of-the-art <strong>deep learning models</strong>, our system evaluates images of skin 
+                lesions to determine whether they are <span class="highlight">benign or cancerous</span>, enabling 
+                <strong>early detection and proactive care</strong>. Our goal is to make 
+                <strong>skin health assessments more accessible, efficient, and reliable</strong>, 
+                empowering users with <strong>fast, data-driven insights</strong>.</p>
+
+            <p>We are committed to bridging the gap between <strong>technology and dermatology</strong>, 
+                ensuring that <strong>everyone has access to cutting-edge AI tools</strong> 
+                for better skin health and peace of mind.</p>
+        </div>
+    </section>
+
+<!--  3 peice testemony-->
+    <section class="home-section-3 px-5 mx-3">
+        <div class="container text_container">
+            <div class="row gx-5 gy-1">
+                <div class="col-12 col-md-4 home-section-3-card"> 
+                    <div class="border card-sample">
+                        <h2>AI Leveraged Model</h2>
+                        <p>Learn more anout out cutting-edge advance technology</p>
+                        <a href="#">Learn More</a> <!-- Added a call-to-action button -->
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 home-section-3-card">
+                    <div class="border card-sample">
+                        <h2>Easy to Use</h2>
+                        <p> Take a picture of your skin, upload the image, and deetct any unusuality in three east steps</p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 home-section-3-card">
+                    <div class="border card-sample">
+                        <h2>Timely Management of Skin Health</h2>
+                        <p> 99% five-year survival rate when caught before it spreads</p>
+                    </div>
+                </div>
+            </div> <!-- This was missing -->
+        </div> <!-- This was missing -->
+    </section>
+</div>
+
+
+<!-- Home Section 2 -->
+    <section class="home-section2 " id="section-2">
+        <div class="container-sx  mx-5 px-5 text_container">
+            <div class="row"> <!-- Fixed typo: "row-" to "row" -->
+                <!-- Left Column -->
+                <div class="col-md-7 section2-left">
+                    <div class="content-wrapper"> <!-- Added wrapper for better structure -->
+                        <h3>AI Leveraged Tool to Manage Skin Cancer On Time</h3>
+                        <p class="lead"> <!-- Added a lead paragraph for more context -->
+                            Our advanced AI tool helps you detect and manage skin cancer early, 
+                            providing accurate and reliable results.
+                        </p>
+                        <a href="#">Learn More</a> <!-- Added a call-to-action button -->
+                    </div>
+                </div>
+    
+                <!-- Right Column -->
+                <div class="col-md-5 section2-right">
+                    <div class="content-wrapper text-center"> <!-- Added wrapper and centered text -->
+                        <div class="section2-content">
+                        <div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section class="home-section4" id="section-4">
+        <div class="container-fluid text_container">
+            <div class="content-wrapper text-center">
+                <div class="section4-content">
+                    <h2>BE AHEAD OF THE GAME</h2>
+                    <a href="{% url 'dashboard' %}" class="btn">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    
+
+
+{% endblock %}

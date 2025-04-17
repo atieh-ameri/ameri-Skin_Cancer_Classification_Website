@@ -1,0 +1,205 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">Analysis Results</h2>
+    
+
+    <!--
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    -->
+    
+    {% if classification_result %}
+    <div class="row g-4 ">
+
+
+        <!-- Left Column - Patient Information -->
+        <div class="col-lg-6">
+            <div class="card h-100 shadow-sm">
+                <div class="card-header bg-secondary text-white">
+                    <h4 class="mb-0"><i class="fas fa-user-circle me-2"></i>Patient Information</h4>
+                </div>
+                <div class="card-body">
+                    <div class="patient-info">
+                        <div class="info-item mb-3">
+                            <div class="info-label"><i class="fas fa-venus-mars me-2"></i><strong>Sex:</strong></div>
+                            <div class="info-value">{{ classification_result.sex }}</div>
+                        </div>
+                        <div class="info-item mb-3">
+                            <div class="info-label"><i class="fas fa-birthday-cake me-2"></i><strong>Date of Birth:</strong></div>
+                            <div class="info-value">{{ classification_result.dob }}</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label"><i class="fas fa-map-marker-alt me-2"></i><strong>Location:</strong></div>
+                            <div class="info-value">{{ classification_result.location }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right Column - Image Analysis -->
+        <div class="col-lg-6">
+            <div class="card h-100 shadow-sm">
+                <div class="card-header bg-secondary text-white">
+                    <h4 class="mb-0"><i class="fas fa-image me-2"></i>Image Analysis</h4>
+                </div>
+                <div class="card-body d-flex flex-column">
+                    {% if classification_result.image_url %}
+                    <div class="image-container mb-4 text-center">
+                        <img src="{{ classification_result.image_url }}" class="img-fluid rounded border" alt="Analyzed image" style="max-height: 300px;">
+                    </div>
+                    {% endif %}
+                    
+                    {% if classification_result.prediction %}
+                    <div class="prediction-results mt-auto">
+                        <h5 class="border-bottom pb-2"><i class="fas fa-chart-bar me-2"></i>Prediction Results</h5>
+                       
+
+                        <div class="result-item">
+                            <span class="result-label"><strong>Probility of being malignant:</strong></span>
+                            <span class="result-value">
+                                <div class="progress" style="height: 20px;">
+                                    <div class="progress-bar bg-success" role="progressbar" >
+                                        
+                                        {{ classification_result.prediction}}%
+                                    </div>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Action Buttons -->
+    <div class="row mt-4">
+        <div class="col-12 text-center">
+            <div class="d-grid gap-2 d-md-block">
+                <form method="post" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger me-md-2">
+                        <i class="fas fa-trash-alt me-2"></i>Clean Up
+                    </button>
+                </form>
+                <a href="{% url 'dashboard' %}" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="row">
+        <div class="col-12">
+            <div class="alert alert-warning text-center">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                No analysis results found. Please upload an image from the dashboard.
+            </div>
+            <div class="text-center">
+                <a href="{% url 'dashboard' %}" class="btn btn-primary">
+                    <i class="fas fa-tachometer-alt me-2"></i>Go to Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<style>
+    /* Custom styling for the results page */
+    .patient-info .info-item {
+        display: flex;
+        align-items: center;
+        padding: 0.75rem 1rem;
+        background-color: #f8f9fa;
+        border-radius: 5px;
+    }
+    
+    .info-label {
+        font-size:10sem;
+    }
+
+    
+
+    .patient-info .info-label {
+        width: 150px;
+        color: #495057;
+    }
+    
+    .patient-info .info-value {
+        flex: 1;
+        color: #212529;
+    }
+    
+    .prediction-results {
+        background-color: #f8f9fa;
+        padding: 1.25rem;
+        border-radius: 5px;
+    }
+    
+    .result-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+    
+    .result-label {
+        font-weight: 500;
+        color: #495057;
+    }
+    
+    .result-value {
+        text-align: right;
+    }
+    
+    .card {
+        border: none;
+        border-radius: 10px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .card-header {
+        border-radius: 10px 10px 0 0 !important;
+    }
+    
+    @media (max-width: 768px) {
+        .patient-info .info-item {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .patient-info .info-label {
+            width: 100%;
+            margin-bottom: 0.25rem;
+        }
+        
+        .result-item {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .result-value {
+            width: 100%;
+            margin-top: 0.25rem;
+        }
+    }
+</style>
+{% endblock %}

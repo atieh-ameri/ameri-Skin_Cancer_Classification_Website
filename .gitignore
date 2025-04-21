@@ -1,2 +1,8 @@
-.venv 
+.venv/
+*.ipynb
 *.h5
+*.pkl
+*.csv
+*.zip
+__pycache__/
+*.log

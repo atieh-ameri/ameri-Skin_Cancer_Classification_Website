@@ -1,6 +1,5 @@
 .venv/
 *.ipynb
-*.h5
 *.pkl
 *.csv
 *.zip
